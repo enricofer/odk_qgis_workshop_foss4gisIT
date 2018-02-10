@@ -22,7 +22,7 @@ https://github.com/enricofer/QgisODK/
 
 ---
 
-# Come si utilizza ODK
+# Come si utilizza
 
 - Un indagine ODK è tipicamente basata sulle seguenti attività:
   - Progetto delle informazioni da raccogliere  (build)
@@ -31,4 +31,11 @@ https://github.com/enricofer/QgisODK/
 - ODK non è un applicazione, ma un ecosistema di applicazioni orientare a queste attività
 
 ---
+
+# Il Flusso ODK
+
+![flusso](https://camo.githubusercontent.com/76d406ed2647972ef7b84bfc1f344db2c3b0287e/687474703a2f2f70726f6772616d732e676f6f6472657475726e2e6f72672e61752f77702d636f6e74656e742f75706c6f6164732f73697465732f31352f323031352f30352f4f444b2d50726f636573732d4e65772d31303234783537362e706e67)
+
+---
+
 
