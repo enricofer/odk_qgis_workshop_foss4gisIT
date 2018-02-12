@@ -140,17 +140,19 @@ Servizi:
 
 ## I tipi ODK 1
 
-| Question type  | Answer input  |
+
+| <sub><sup>Question type</sup></sub>  | <sub><sup>Answer input</sup></sub>  |
 | -------------- | ------------- |
-| integer        | Integer (i.e., whole number) input. |
-| decimal        | Decimal input. |
-| text | Free text response.</td> |
-| select_one [options] | Multiple choice question; only one answer can be selected. | 
-| select_multiple [options] | Not supported by QgisODK plugin. |
-| note | Not supported by QGISODK plugin | 
-| geopoint | Collect a single GPS coordinates. |
-| geotrace | Record a line of two or more GPS coordinates. |
-| geoshape | Record a polygon of multiple GPS coordinates; the last point is the same as the first point.|
+| <sub><sup>integer</sup></sub>        | <sub><sup>Integer (i.e., whole number) input.</sup></sub> |
+| <sub><sup>decimal</sup></sub>        | <sub><sup>Decimal input.</sup></sub> |
+| <sub><sup>text | <sub><sup>Free text response.</sup></sub>|
+| <sub><sup>select_one [options]</sup></sub> | <sub><sup>Multiple choice question; only one answer can be selected.</sup></sub> | 
+| <sub><sup>select_multiple [options] | <sub><sup>Not supported by QgisODK plugin. |
+| <sub><sup>note | <sub><sup>Not supported by QGISODK plugin | 
+| <sub><sup>geopoint | <sub><sup>Collect a single GPS coordinates. |
+| <sub><sup>geotrace | <sub><sup>Record a line of two or more GPS coordinates. |
+| <sub><sup>geoshape | <sub><sup>Record a polygon of multiple GPS coordinates; the last point is the same as the first point.|
+
 
 ---
 
