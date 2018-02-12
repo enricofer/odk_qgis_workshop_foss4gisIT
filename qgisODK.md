@@ -81,3 +81,89 @@ https://github.com/enricofer/QgisODK/
 - Gli strumenti ad disposizione sono:
  - ODK collect (android app) google play store
  - Enketo webapp https://enketo.org/
+
+---
+
+## ODK collect app
+
+![odk collect app](./doc/15-odk-collect0.png)
+
+---
+
+## Enketo webapp
+
+![Enketo webapp](./doc/enketo01.png)
+
+---
+
+## Aggregazione delle informazioni (aggregate)
+
+- Le informazioni raccolte nei dispositivi mobili vengono trasferiti al server di aggregazione in presenza di connesione di rete
+- Ad ogni modulo corrisponde un record nel server di aggregazione
+- Nel server di aggregazione risiedono anche i modelli Xform dei moduli di compilare e viene mantenuta la relazione tra modulo e database
+
+---
+
+## Server di aggregazione
+
+Applicazioni:
+- Odk aggregate: https://opendatakit.org/use/aggregate/
+- Formhub: https://github.com/SEL-Columbia/formhub
+Servizi:
+- Google Drive
+- Ona.io
+- Formhub (American Red Cross)
+- surveyCTO
+
+---
+
+## Funzionalità di QgisODK
+
+- Generare il modulo da inserire nel flusso ODK direttamente da un layer sorgente di QGIS adattando i tipi di dati di QGIS ai tipi ODK
+- Riorganizzare i campi per la raccolta in loco
+- Trasferire i moduli  ad una piattaforma ODK
+- Sincronizzare i dati raccolti con il layer sorgente
+
+---
+
+## I  “field widget” di QGIS
+
+![Enketo webapp](./doc/0-qgis-props-fields.png)
+
+---
+
+## I tipi ODK
+
+![Enketo webapp](./doc/enketo01.png)
+
+---
+
+## I tipi ODK 1
+
+| Question type  | Answer input  |
+| -------------- | ------------- |
+| integer        | Integer (i.e., whole number) input. |
+| decimal        | Decimal input. |
+| text | Free text response.</td> |
+| select_one [options] | Multiple choice question; only one answer can be selected. | 
+| select_multiple [options] | Not supported by QgisODK plugin. |
+| note | Not supported by QGISODK plugin | 
+| geopoint | Collect a single GPS coordinates. |
+| geotrace | Record a line of two or more GPS coordinates. |
+| geoshape | Record a polygon of multiple GPS coordinates; the last point is the same as the first point.|
+
+---
+
+## I tipi ODK 2
+
+| Question type  | Answer input  |
+| -------------- | ------------- |
+| date | Date input. | 
+| time | Time input. | 
+| dateTime | Accepts a date and a time input. |
+| image | Take a picture. | 
+| audio | Take an audio recording. | 
+| video | Take a video recording. | 
+| barcode | Scan a barcode, requires the barcode scanner app to be installed. | 
+| calculate | Not supported by QGISODK plugin | 
+| acknowledge| Not supported by QGISODK plugin | 
