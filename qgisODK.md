@@ -45,13 +45,14 @@ https://github.com/enricofer/QgisODK/
 - Per la progettazione della form, ODK mette a disposizione lo strumento build: https://build.opendatakit.org/
 - In alternativa il contenuto informativo può essere definito con un XlsForm, ovvero un foglio di excel opportunamente compilato traducibile in Xform. http://xlsform.org/
 
----
+--
 
 ## Xform con ODK build
 
 ![odk build](./doc/odk_build.png)
 
----
+
+--
 
 ## Xform da XlsForm
 
@@ -62,14 +63,17 @@ https://github.com/enricofer/QgisODK/
   - Foglio choices per campi categorizzati
   - Foglio settings per settaggio personalizzati del foglio
   - Altre colonne opzionali nel foglio survey (constraint, appearance, etc) con cui guidare l’inserimento delle informazioni
-  
-  ---
-  
+
+
+--
+
 ## Xform da XlsForm
 
-![odk build](./doc/xls_form_example1.png)
+![](./doc/xls_form_example1.png)
+
 
 ---
+
 
 ## Raccolta dati (collect)
 
@@ -82,13 +86,19 @@ https://github.com/enricofer/QgisODK/
  - ODK collect (android app) google play store
  - Enketo webapp https://enketo.org/
 
----
+--
 
 ## ODK collect app
 
 ![odk collect app](./doc/15-odk-collect0.png)
 
----
+--
+
+## Raccolta dati con ODK collect
+
+![](./doc/09-odk-collect2.png)
+
+--
 
 ## Enketo webapp
 
@@ -102,7 +112,7 @@ https://github.com/enricofer/QgisODK/
 - Ad ogni modulo corrisponde un record nel server di aggregazione
 - Nel server di aggregazione risiedono anche i modelli Xform dei moduli di compilare e viene mantenuta la relazione tra modulo e database
 
----
+--
 
 ## Server di aggregazione
 
@@ -126,7 +136,7 @@ Servizi:
 
 ---
 
-## I  “field widget” di QGIS
+## I  “field widgets” di QGIS
 
 ![Enketo webapp](./doc/0-qgis-props-fields.png)
 
@@ -140,32 +150,53 @@ Servizi:
 
 ## I tipi ODK 1
 
-
-| <sub><sup>Question type</sup></sub>  | <sub><sup>Answer input</sup></sub>  |
-| -------------- | ------------- |
-| <sub><sup>integer</sup></sub>        | <sub><sup>Integer (i.e., whole number) input.</sup></sub> |
-| <sub><sup>decimal</sup></sub>        | <sub><sup>Decimal input.</sup></sub> |
-| <sub><sup>text | <sub><sup>Free text response.</sup></sub>|
-| <sub><sup>select_one [options]</sup></sub> | <sub><sup>Multiple choice question; only one answer can be selected.</sup></sub> | 
-| <sub><sup>select_multiple [options] | <sub><sup>Not supported by QgisODK plugin. |
-| <sub><sup>note | <sub><sup>Not supported by QGISODK plugin | 
-| <sub><sup>geopoint | <sub><sup>Collect a single GPS coordinates. |
-| <sub><sup>geotrace | <sub><sup>Record a line of two or more GPS coordinates. |
-| <sub><sup>geoshape | <sub><sup>Record a polygon of multiple GPS coordinates; the last point is the same as the first point.|
-
+![](./doc/ODK_types.png)
 
 ---
 
-## I tipi ODK 2
+## Riorganizzazione dei campi
 
-| Question type  | Answer input  |
-| -------------- | ------------- |
-| date | Date input. | 
-| time | Time input. | 
-| dateTime | Accepts a date and a time input. |
-| image | Take a picture. | 
-| audio | Take an audio recording. | 
-| video | Take a video recording. | 
-| barcode | Scan a barcode, requires the barcode scanner app to be installed. | 
-| calculate | Not supported by QGISODK plugin | 
-| acknowledge| Not supported by QGISODK plugin | 
+![](./doc/4-mainDialog-group.png)
+
+---
+
+## La finestra di dialogo principale
+
+![](./doc/2-mainDialog.png)
+
+---
+
+## Esportazione dei moduli
+
+- Il modulo di raccolta dati può essere trasferito ad un servizio remoto di aggregazione o caricato manualmente sul dispositivo mobile sotto forma di file XML
+- I servizi aggregazione attualmente riconosciuti dal plugin sono il server ODK aggregate, ona.io (gratuito con registrazione) e google drive
+- Altri servizi di aggregazione possono essere usati generando un file XlsForm (SurveyCTO ODK aggregate)
+
+---
+
+## la configurazione per ODK aggregate
+
+![](./doc/ODK_types.png)
+
+
+--
+
+## la configurazione per ona.io
+
+![](./doc/ODK_types.png)
+
+---
+
+## Sincronizzazione dati raccolti/layer sorgente
+
+- I dati raccolti con ODK collect e trasferiti al servizio di aggregazione possono essere importati in QGIS come nuovo layer o sincronizzati 
+nel layer sorgente 
+- È possibile mappare i campi importati su campi del layer di destinazione
+- Scaricamento degli allegati
+
+---
+
+## Sviluppi
+
+- Aggiunta di nuovi servizi di aggregazione
+- Esportazione di dati geografici di riferimento da visualizzare in mappa (interazione con il taem di sviluppo di ODK) – talvolta i dati non devono essere nuovamente raccolti, ma solo verificati

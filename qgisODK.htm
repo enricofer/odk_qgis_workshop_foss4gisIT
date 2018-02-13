@@ -2,25 +2,44 @@
 	<head>
 		<link rel="stylesheet" href="https://revealjs.com/css/reveal.css">
 		<link rel="stylesheet" href="https://revealjs.com/css/theme/black.css">
+        <style>
+            .reveal section {
+                font-weight: bold !important;
+                font-size: 0.9em !important;
+                line-height: 1; !important;
+            }
+
+            .reveal section pre code {
+                font-size: 0.7em !important;
+            }
+        </style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-                    <section data-markdown="qgisODK.md"
-                             data-separator="^\n\n\n"
-                             data-separator-vertical="^\n\n"
-                             data-separator-notes="^Note:"
-                             data-charset="iso-8859-15">
-                        <!--
-                            Note that Windows uses `\r\n` instead of `\n` as its linefeed character.
-                            For a regex that supports all operating systems, use `\r?\n` instead of `\n`.
-                        -->
-                    </section>
+                <section data-markdown="qgisODK.md" data-separator="^\n---\n$" data-separator-vertical="^\n--\n$"></section>
 			</div>
 		</div>
 		<script src="https://revealjs.com/js/reveal.js"></script>
+        <script src="https://revealjs.com/plugin/markdown/marked.js"></script>
+        <script src="https://revealjs.com/plugin/markdown/markdown.js"></script>
+        <script src="https://revealjs.com/plugin/highlight/highlight.js"></script>
+        <script src="https://revealjs.com/plugin/search/search.js"></script>
+        <script src="https://revealjs.com/plugin/search/zoom.js"></script>
+        <script src="https://revealjs.com/plugin/search/notes.js"></script>
+
 		<script>
-			Reveal.initialize();
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+                transition: 'concave', // default/cube/page/concave/zoom/linear/fade/none
+                backgroundTransition: 'concave', // default/none/slide/concave/convex/zoom
+                viewDistance: 6,
+                parallaxBackgroundImage: 'http://betheme.muffingroupsc.netdna-cdn.com/be/parallax/wp-content/uploads/2015/01/home-parallax-section-works.jpg', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'" 'http://betheme.muffingroupsc.netdna-cdn.com/be/parallax/wp-content/uploads/2015/01/home-parallax-section-works.jpg
+                parallaxBackgroundSize: '4000px 2000px' // CSS syntax, e.g. "2100px 900px"
+			});
 		</script>
 	</body>
 </html>
