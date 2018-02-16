@@ -1,18 +1,18 @@
-QgisODK
-===
+# QgisODK
 
 FOSS4G Italia 2018 - ROMA
 
-Raccolta in loco di informazioni a contenuto geospaziale con Open Data Kit (ODK) e QGIS 
+Raccolta in loco di informazioni a contenuto geospaziale con Open Data Kit (ODK) e QGIS
 
 Enrico Ferreguti – enricofer@gmail.com
 
 https://opendatakit.org/
+
 https://github.com/enricofer/QgisODK/
 
 ---
 
-## ODK
+## [ODK](https://opendatakit.org/)
 
 - E’ sviluppato dall’università di Seattle
 - E’ completamente basato su strumenti e tecnologie opensource
@@ -39,9 +39,10 @@ https://github.com/enricofer/QgisODK/
 ---
 
 
-## Progetto delle informazioni  (build)
+## Progetto delle informazioni
+## (build)
 
-- Le informazioni da raccogliere sono organizzate in moduli secondo lo standard Xform (XML)
+- Le informazioni da raccogliere sono organizzate in moduli secondo lo standard [Xform](https://en.wikipedia.org/wiki/XForms) (XML)
 - Per la progettazione della form, ODK mette a disposizione lo strumento build: https://build.opendatakit.org/
 - In alternativa il contenuto informativo può essere definito con un XlsForm, ovvero un foglio di excel opportunamente compilato traducibile in Xform. http://xlsform.org/
 
@@ -75,7 +76,8 @@ https://github.com/enricofer/QgisODK/
 ---
 
 
-## Raccolta dati (collect)
+## Raccolta dati
+## (collect)
 
 - La raccolta dati viene effettuato con un dispositivo mobile senza la necessità di connessione di rete
 - La raccolta avviene in tre fasi:
@@ -104,9 +106,16 @@ https://github.com/enricofer/QgisODK/
 
 ![Enketo webapp](./doc/enketo01.png)
 
+--
+
+## Altre apps
+
+![](./doc/odk_apps.png)
+
 ---
 
-## Aggregazione delle informazioni (aggregate)
+## Aggregazione delle informazioni
+## (aggregate)
 
 - Le informazioni raccolte nei dispositivi mobili vengono trasferiti al server di aggregazione in presenza di connesione di rete
 - Ad ogni modulo corrisponde un record nel server di aggregazione
@@ -117,7 +126,7 @@ https://github.com/enricofer/QgisODK/
 ## Server di aggregazione
 
 Applicazioni:
-- Odk aggregate: https://opendatakit.org/use/aggregate/
+- Odk aggregate: https://opendatakit.org/use/aggregate/ [VM](http://192.168.56.101)
 - Formhub: https://github.com/SEL-Columbia/formhub
 Servizi:
 - Google Drive
@@ -127,10 +136,91 @@ Servizi:
 
 ---
 
+## l'aspetto geospaziale di ODK
+
+- (build) - i tipi geospaziali in ODK
+ - geopoint
+ - geotrace
+ - geoshape
+
+- (collect) - il campo localizzazione
+ - default
+ - maps
+ - placement map
+
+- (aggregate) - restituzione dei dati geografici
+
+--
+
+## (build) - i tipi geospaziali in ODK
+
+- geopoint: corrisponde alla geometria punto espressa in latitudine e longitudine, altezza e precisione
+- geotrace: corrisponde alla geometria linea espressa in successione di geopoint
+- geoshape: corrisponde alla geometria poligono espressa in successione di geopoint con il punto finale uguale al punto iniziale
+
+--
+
+## (collect) - il campo localizzazione
+
+i campi definiti come tipi geospaziali nella XForm sono gestiti dall'applicazione geospaziale a seconda del tipo geospaziale ed a seconda dell'aspetto ('appearance') stabilito nella Xform. I tipi di aspetto sono i seguenti:
+
+- default: per i geopoint l'applicazione si mette in attesa del punto gps senza mostrare nessuna mappa, mentre per geotrace e geoshape corrisponde a maps
+- maps: compare una mappa predefinita su cui è possibile verificare l'attuale localizzazione ed effettuare i campionamenti usando la posizione indicata dal GPS del dispositivo
+- placement map: compare una mappa su cui è possibile indicare manualmente la posizione da rilevare
+
+--
+
+## (aggregate) - restituzione dei dati geografici
+
+- I dati a contenuto geospaziale di tipo geopoint sono costituita da quattro numeri separati da spazi:
+ - 45.35214524585178 11.1676025390625 27.0 15.0 che corrispondono a (latitudine longitudine altezza precisione)
+- I dati geotrace sono costituiti da successioni di geopunti separati da ";" (punto e virgola)
+- I dati geoshape sono geotrace con il punto finale coincidente con quello iniziale
+
+---
+
+## ODK e GIS
+
+- punti di forza:
+ - rilevazione sul campo senza infrastruttura di rete
+ - possibilità di personalizzare l'interfaccia di rilevazione
+ - possibilità di personalizzare le mappe di base con mappe offline esportate in [mbtiles](https://forum.opendatakit.org/t/role-of-the-layers-folder-in-odk-collect/10168/6?u=ln)
+
+- punti di debolezza
+ - scarsa integrazione con le sorgenti dati esistenti
+ - i dati non standard hanno bisogno ulteriore decodifica
+ - i dati non sono di immediato riutilizzo
+ - non si presta alla manutenzione dei dati
+
+---
+
+## integrazione con il GIS
+
+- strumenti di integrazione tra ODK aggregate e postgis
+ - integrazione a livello database tra le tabelle di ODK aggregate e tabelle in Postgis/Postgresql.
+ - I dati raccolti sono cartografati in tempo reale.
+
+- plugin QgisODK
+ - integrazione a livello applicativo di ODK con altre sorgenti di dati geografiche supportate da QGIS.
+ - Consente di automatizzare il processo di creazione della form di raccolta e la sincronizzazione con le sorgenti dati esistenti.
+
+---
+
+## strumenti di integrazione tra ODK aggregate e postgis
+
+- Autore: mathieu.bossaert@cenlr.org, Conservatoire d'espace naturels Laguedoc-Roussilion
+  [Web](http://si.cenlr.org/geoodk_sicen_mobile) / [Repository](https://framagit.org/mathieubossaert/formation_odk/wikis/cote-base-de-donnee)
+
+- La procedura permette di aggiornare in modo automatico, alla registrazione di una submission su odk aggregate, il sistema informazione naturalistica dell'ente. 
+- permette una stretta integrazione tra sistemi di raccolta e rappresentazione cartografica, ma è molto legata al database ed alla struttura del dataset
+
+---
+
 ## Funzionalità di QgisODK
 
-- Generare il modulo da inserire nel flusso ODK direttamente da un layer sorgente di QGIS adattando i tipi di dati di QGIS ai tipi ODK
+- Generazione semiautomatica del il modulo XForm a partire dalla proprietà del layer sorgente di QGIS adattando i tipi di dati/widget di QGIS ai tipi ODK
 - Riorganizzare i campi per la raccolta in loco
+- Multipiattaforma di aggregazione (attualmente ODK aggregate, Google Drive e ona.io)
 - Trasferire i moduli  ad una piattaforma ODK
 - Sincronizzare i dati raccolti con il layer sorgente
 
@@ -139,12 +229,6 @@ Servizi:
 ## I  “field widgets” di QGIS
 
 ![Enketo webapp](./doc/0-qgis-props-fields.png)
-
----
-
-## I tipi ODK
-
-![Enketo webapp](./doc/enketo01.png)
 
 ---
 
@@ -174,24 +258,19 @@ Servizi:
 
 ---
 
-## la configurazione per ODK aggregate
+## Servizi di aggregazione supportati
 
-![](./doc/ODK_types.png)
-
-
---
-
-## la configurazione per ona.io
-
-![](./doc/ODK_types.png)
+- [ODK aggregate](https://github.com/enricofer/QgisODK/blob/master/README.md#7-qgisodk-and-odk-aggregate): inserire URL del server e credenziali di accesso in scrittura
+- [Google Drive](https://github.com/enricofer/QgisODK/blob/master/README.md#6-qgisodk-and-google-drive): inserire email di Google con autenticazione oauth2 alla connessione al servizio (servizio di notifica dei partecipanti alla raccolta dati)
+- [ona.io](https://github.com/enricofer/QgisODK/blob/master/README.md#5-qgisodk-and-onaio): inserire codice di progetto di ona e credenziali di accesso al servizio
 
 ---
 
 ## Sincronizzazione dati raccolti/layer sorgente
 
-- I dati raccolti con ODK collect e trasferiti al servizio di aggregazione possono essere importati in QGIS come nuovo layer o sincronizzati 
-nel layer sorgente 
-- È possibile mappare i campi importati su campi del layer di destinazione
+- I dati raccolti con ODK collect e trasferiti al servizio di aggregazione possono essere importati in QGIS come nuovo layer o sincronizzati
+nel layer sorgente
+- È possibile mappare i campi importati su campi del layer di destinazione [indicando opportunamente i layer di destinazione](https://github.com/enricofer/QgisODK/blob/master/README.md#8-importing-collected-data)
 - Scaricamento degli allegati
 
 ---
@@ -199,4 +278,4 @@ nel layer sorgente
 ## Sviluppi
 
 - Aggiunta di nuovi servizi di aggregazione
-- Esportazione di dati geografici di riferimento da visualizzare in mappa (interazione con il taem di sviluppo di ODK) – talvolta i dati non devono essere nuovamente raccolti, ma solo verificati
+- Generazione di mbtiles per mappe offline
