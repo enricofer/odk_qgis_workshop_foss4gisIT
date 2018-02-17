@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>commercio</h:title>
+    <model>
+      <instance>
+        <commercio id="commercio">
+          <localizzazione>
+            <GEOMETRY/>
+            <nomevia/>
+            <numero/>
+            <letterale/>
+          </localizzazione>
+          <descrizione>
+            <ditta/>
+            <settore/>
+            <nota/>
+            <fotoinsieme/>
+          </descrizione>
+          <subscriberid/>
+          <ODKUUID/>
+        </commercio>
+      </instance>
+      <bind nodeset="/commercio/localizzazione/GEOMETRY" required="true()" type="geopoint"/>
+      <bind nodeset="/commercio/localizzazione/nomevia" type="string"/>
+      <bind nodeset="/commercio/localizzazione/numero" type="int"/>
+      <bind nodeset="/commercio/localizzazione/letterale" type="string"/>
+      <bind nodeset="/commercio/descrizione/ditta" type="string"/>
+      <bind nodeset="/commercio/descrizione/settore" type="select1"/>
+      <bind nodeset="/commercio/descrizione/nota" type="string"/>
+      <bind nodeset="/commercio/descrizione/fotoinsieme" type="binary"/>
+      <bind jr:preload="property" jr:preloadParams="subscriberid" nodeset="/commercio/subscriberid" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/commercio/ODKUUID" readonly="true()" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <group appearance="field-list" ref="/commercio/localizzazione">
+      <label>localizzazione</label>
+      <input appearance="placement-map" ref="/commercio/localizzazione/GEOMETRY">
+        <label>Insert geometry</label>
+      </input>
+      <input ref="/commercio/localizzazione/nomevia">
+        <label>nomevia</label>
+      </input>
+      <input ref="/commercio/localizzazione/numero">
+        <label>numero</label>
+      </input>
+      <input ref="/commercio/localizzazione/letterale">
+        <label>letterale</label>
+      </input>
+    </group>
+    <group appearance="field-list" ref="/commercio/descrizione">
+      <label>descrizione</label>
+      <input ref="/commercio/descrizione/ditta">
+        <label>ditta</label>
+      </input>
+      <select1 appearance="minimal" ref="/commercio/descrizione/settore">
+        <label>settore</label>
+        <item>
+          <label>ESERCIZI PUBBLICI</label>
+          <value>ESERCIZI PUBBLICI</value>
+        </item>
+        <item>
+          <label>OSAP ESERCIZI PUBBLICI</label>
+          <value>OSAP ESERCIZI PUBBLICI</value>
+        </item>
+        <item>
+          <label>ARTIGIANI</label>
+          <value>ARTIGIANI</value>
+        </item>
+        <item>
+          <label>SFITTO</label>
+          <value>SFITTO</value>
+        </item>
+        <item>
+          <label>ALTRO NON COMMERCIALE</label>
+          <value>ALTRO NON COMMERCIALE</value>
+        </item>
+        <item>
+          <label>OSAP COMMERCIO FISSO</label>
+          <value>OSAP COMMERCIO FISSO</value>
+        </item>
+        <item>
+          <label>MAGAZZINO</label>
+          <value>MAGAZZINO</value>
+        </item>
+        <item>
+          <label>ALTRA ATTIVITA ECONOMICA</label>
+          <value>ALTRA ATTIVITA ECONOMICA</value>
+        </item>
+        <item>
+          <label>COMMERCIO FISSO</label>
+          <value>COMMERCIO FISSO</value>
+        </item>
+      </select1>
+      <input ref="/commercio/descrizione/nota">
+        <label>nota</label>
+      </input>
+      <upload mediatype="image/*" ref="/commercio/descrizione/fotoinsieme">
+        <label>fotoinsieme</label>
+      </upload>
+    </group>
+  </h:body>
+</h:html>

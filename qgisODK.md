@@ -12,15 +12,30 @@ https://github.com/enricofer/QgisODK/
 
 ---
 
-## [ODK](https://opendatakit.org/)
+# indice
+
+1. [Introduzione a ODK](#/2)
+1. [Progetto delle informazioni (build)](#/3)
+1. [Raccolta dati (collect)](#/4)
+1. [Aggregazione delle informazioni (aggregate)](#/5)
+1. [i dati geospaziali in ODK](#/6)
+1. [Strumenti di integrazione con il GIS](#/7)
+1. [procedure di integrazione tra ODK aggregate e postgis](#/8)
+1. [Il plugin QgisODK](#/9)
+1. [Materiali del workshop](#/10)
+
+---
+
+## ODK
 
 - E’ sviluppato dall’università di Seattle
 - E’ completamente basato su strumenti e tecnologie opensource
 - E’ finalizzato a:
   - Raccogliere informazioni in modo semplice con l’ausilio di dispositivi mobili, anche in mancanza di connessioni stabili di rete
   - Aggregare le informazioni raccolte da molti utenti e pubblicarle
+- [Esempi di utilizzo](https://forum.opendatakit.org/c/showcase)
 
----
+--
 
 ## Come si utilizza
 
@@ -30,7 +45,7 @@ https://github.com/enricofer/QgisODK/
   - Aggregazione dei dati raccolti (aggregate)
 - ODK non è un applicazione, ma un ecosistema di applicazioni orientare a queste attività
 
----
+--
 
 ## Il Flusso ODK
 
@@ -136,7 +151,7 @@ Servizi:
 
 ---
 
-## l'aspetto geospaziale di ODK
+## i dati geospaziali in ODK
 
 - (build) - i tipi geospaziali in ODK
  - geopoint
@@ -177,9 +192,9 @@ i campi definiti come tipi geospaziali nella XForm sono gestiti dall'applicazion
 - I dati geotrace sono costituiti da successioni di geopunti separati da ";" (punto e virgola)
 - I dati geoshape sono geotrace con il punto finale coincidente con quello iniziale
 
----
+--
 
-## ODK e GIS
+#### ODK e GIS
 
 - punti di forza:
  - rilevazione sul campo senza infrastruttura di rete
@@ -189,6 +204,7 @@ i campi definiti come tipi geospaziali nella XForm sono gestiti dall'applicazion
 - punti di debolezza
  - scarsa integrazione con le sorgenti dati esistenti
  - i dati non standard hanno bisogno ulteriore decodifica
+ - la posizione geografica deve essere riproiettata
  - i dati non sono di immediato riutilizzo
  - non si presta alla manutenzione dei dati
 
@@ -206,7 +222,7 @@ i campi definiti come tipi geospaziali nella XForm sono gestiti dall'applicazion
 
 ---
 
-## strumenti di integrazione tra ODK aggregate e postgis
+## procedure di integrazione tra ODK aggregate e postgis
 
 - Autore: mathieu.bossaert@cenlr.org, Conservatoire d'espace naturels Laguedoc-Roussilion
   [Web](http://si.cenlr.org/geoodk_sicen_mobile) / [Repository](https://framagit.org/mathieubossaert/formation_odk/wikis/cote-base-de-donnee)
@@ -216,39 +232,40 @@ i campi definiti come tipi geospaziali nella XForm sono gestiti dall'applicazion
 
 ---
 
-## Funzionalità di QgisODK
+## Il plugin QgisODK
 
+- plugin di QGIS
 - Generazione semiautomatica del il modulo XForm a partire dalla proprietà del layer sorgente di QGIS adattando i tipi di dati/widget di QGIS ai tipi ODK
 - Riorganizzare i campi per la raccolta in loco
 - Multipiattaforma di aggregazione (attualmente ODK aggregate, Google Drive e ona.io)
 - Trasferire i moduli  ad una piattaforma ODK
 - Sincronizzare i dati raccolti con il layer sorgente
 
----
+--
 
 ## I  “field widgets” di QGIS
 
-![Enketo webapp](./doc/0-qgis-props-fields.png)
+![](./doc/0-qgis-props-fields.png)
 
----
+--
 
 ## I tipi ODK 1
 
 ![](./doc/ODK_types.png)
 
----
+--
 
 ## Riorganizzazione dei campi
 
 ![](./doc/4-mainDialog-group.png)
 
----
+--
 
 ## La finestra di dialogo principale
 
 ![](./doc/2-mainDialog.png)
 
----
+--
 
 ## Esportazione dei moduli
 
@@ -256,7 +273,7 @@ i campi definiti come tipi geospaziali nella XForm sono gestiti dall'applicazion
 - I servizi aggregazione attualmente riconosciuti dal plugin sono il server ODK aggregate, ona.io (gratuito con registrazione) e google drive
 - Altri servizi di aggregazione possono essere usati generando un file XlsForm (SurveyCTO ODK aggregate)
 
----
+--
 
 ## Servizi di aggregazione supportati
 
@@ -264,7 +281,7 @@ i campi definiti come tipi geospaziali nella XForm sono gestiti dall'applicazion
 - [Google Drive](https://github.com/enricofer/QgisODK/blob/master/README.md#6-qgisodk-and-google-drive): inserire email di Google con autenticazione oauth2 alla connessione al servizio (servizio di notifica dei partecipanti alla raccolta dati)
 - [ona.io](https://github.com/enricofer/QgisODK/blob/master/README.md#5-qgisodk-and-onaio): inserire codice di progetto di ona e credenziali di accesso al servizio
 
----
+--
 
 ## Sincronizzazione dati raccolti/layer sorgente
 
@@ -273,9 +290,36 @@ nel layer sorgente
 - È possibile mappare i campi importati su campi del layer di destinazione [indicando opportunamente i layer di destinazione](https://github.com/enricofer/QgisODK/blob/master/README.md#8-importing-collected-data)
 - Scaricamento degli allegati
 
----
+--
 
 ## Sviluppi
 
 - Aggiunta di nuovi servizi di aggregazione
+- Estensione del supporto ai tipi ODK
+- Gestione dei default data
+- Gestione dei vincoli
 - Generazione di mbtiles per mappe offline
+
+---
+
+## Materiali del workshop
+
+- [Dataset di esempio](https://github.com/enricofer/odk_qgis_workshop_foss4gisIT/tree/master/dataset)
+- [Odk aggregate su macchina virtuale locale](http://192.168.56.101)
+- [Cartella condivisa su Google drive](https://drive.google.com/drive/folders/1AFQwPnO7eMTS96a7sQ4bs7KdRvvVa2-2?usp=sharing)
+- [progetto su ona.io](https://ona.io/foss4gisworkshop/53629)
+
+
+--
+
+## Attivita del workshop
+
+1. definizione in QGIS della struttura dei dati da rilevare dati
+1. raggruppamento e specificazione del modulo di raccolta 
+1. predisposizione dei servizi di aggregazione
+ - odk aggregate, gdrive, ona.io
+1. configurazione dei servizi di aggregazione
+ - odk aggregate, gdrive, ona.io
+1. upload del modulo al servizio di aggregazione
+1. raccolta dei dati sul campo
+1. download delle form submission e sincronizzazione con il dataset esistente
