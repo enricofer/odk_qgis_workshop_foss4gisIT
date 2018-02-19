@@ -1,6 +1,6 @@
 # QgisODK
 
-FOSS4G Italia 2018 - ROMA
+[FOSS4G Italia 2018 - ROMA](http://foss4g.it/)
 
 Raccolta in loco di informazioni a contenuto geospaziale con Open Data Kit (ODK) e QGIS
 
