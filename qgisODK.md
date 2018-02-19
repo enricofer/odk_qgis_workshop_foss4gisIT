@@ -20,16 +20,17 @@ https://github.com/enricofer/QgisODK/
 1. [Aggregazione delle informazioni (aggregate)](#/5)
 1. [i dati geospaziali in ODK](#/6)
 1. [Strumenti di integrazione con il GIS](#/7)
-1. [procedure di integrazione tra ODK aggregate e postgis](#/8)
-1. [Il plugin QgisODK](#/9)
-1. [Materiali del workshop](#/10)
+1. [Mobile data conversion kit](#/8)
+1. [procedure di integrazione tra ODK aggregate e postgis](#/9)
+1. [Il plugin QgisODK](#/10)
+1. [Materiali del workshop](#/11)
 
 ---
 
 ## ODK
 
-- E’ sviluppato dall’università di Seattle
-- E’ completamente basato su strumenti e tecnologie opensource
+- E’ sviluppato dal 2009 dall’[University of Washington di Seattle](https://opendatakit.org/about/team/)
+- E’ completamente basato su strumenti e tecnologie aperte ([javarosa](https://github.com/opendatakit/javarosa), [XForms](http://opendatakit.github.io/xforms-spec/))
 - E’ finalizzato a:
   - Raccogliere informazioni in modo semplice con l’ausilio di dispositivi mobili, anche in mancanza di connessioni stabili di rete
   - Aggregare le informazioni raccolte da molti utenti e pubblicarle
@@ -51,6 +52,10 @@ https://github.com/enricofer/QgisODK/
 
 ![flusso](https://camo.githubusercontent.com/76d406ed2647972ef7b84bfc1f344db2c3b0287e/687474703a2f2f70726f6772616d732e676f6f6472657475726e2e6f72672e61752f77702d636f6e74656e742f75706c6f6164732f73697465732f31352f323031352f30352f4f444b2d50726f636573732d4e65772d31303234783537362e706e67)
 
+--
+
+#### [ritorna all'indice](#/1)
+
 ---
 
 
@@ -59,7 +64,7 @@ https://github.com/enricofer/QgisODK/
 
 - Le informazioni da raccogliere sono organizzate in moduli secondo lo standard [Xform](https://en.wikipedia.org/wiki/XForms) (XML)
 - Per la progettazione della form, ODK mette a disposizione lo strumento build: https://build.opendatakit.org/
-- In alternativa il contenuto informativo può essere definito con un XlsForm, ovvero un foglio di excel opportunamente compilato traducibile in Xform. http://xlsform.org/
+- In alternativa il contenuto informativo può essere definito con un [XlsForm](http://xlsform.org/), ovvero un foglio di excel opportunamente compilato [traducibile in Xform](http://geoodk.com/xlsform_converter.html). 
 
 --
 
@@ -79,6 +84,8 @@ https://github.com/enricofer/QgisODK/
   - Foglio choices per campi categorizzati
   - Foglio settings per settaggio personalizzati del foglio
   - Altre colonne opzionali nel foglio survey (constraint, appearance, etc) con cui guidare l’inserimento delle informazioni
+- [specifiche di XlsForm](http://xlsform.org/)
+- [esempio](https://github.com/enricofer/odk_qgis_workshop_foss4gisIT/blob/master/dataset/commercio.xls?raw=true)
 
 
 --
@@ -87,6 +94,9 @@ https://github.com/enricofer/QgisODK/
 
 ![](./doc/xls_form_example1.png)
 
+--
+
+#### [ritorna all'indice](#/1)
 
 ---
 
@@ -102,6 +112,7 @@ https://github.com/enricofer/QgisODK/
 - Gli strumenti ad disposizione sono:
  - ODK collect (android app) google play store
  - Enketo webapp https://enketo.org/
+ - altre apps
 
 --
 
@@ -127,27 +138,36 @@ https://github.com/enricofer/QgisODK/
 
 ![](./doc/odk_apps.png)
 
+--
+
+#### [ritorna all'indice](#/1)
+
 ---
 
 ## Aggregazione delle informazioni
 ## (aggregate)
 
 - Le informazioni raccolte nei dispositivi mobili vengono trasferiti al server di aggregazione in presenza di connesione di rete
-- Ad ogni modulo corrisponde un record nel server di aggregazione
+- Ad ogni modulo compilato corrisponde un record nel server di aggregazione
 - Nel server di aggregazione risiedono anche i modelli Xform dei moduli di compilare e viene mantenuta la relazione tra modulo e database
+- le possibilità di editing dei dati conferiti variano a seconda dei servizi di aggregazione (es. odk-aggregate ODK 2.0 in alpha)
 
 --
 
 ## Server di aggregazione
 
-Applicazioni:
-- Odk aggregate: https://opendatakit.org/use/aggregate/ [VM](http://192.168.56.101)
-- Formhub: https://github.com/SEL-Columbia/formhub
-Servizi:
-- Google Drive
-- Ona.io
-- Formhub (American Red Cross)
-- surveyCTO
+- Applicazioni:
+ - Odk aggregate: https://opendatakit.org/use/aggregate/ [VM](http://192.168.56.101)
+ - Formhub: https://github.com/SEL-Columbia/formhub
+- Servizi:
+ - Google Drive: https://www.google.com/drive/
+ - Ona.io: http://ona.io
+ - Formhub (American Red Cross): http://formhub.org
+ - surveyCTO: https://www.surveycto.com/index.html
+
+--
+
+#### [ritorna all'indice](#/1)
 
 ---
 
@@ -206,13 +226,19 @@ i campi definiti come tipi geospaziali nella XForm sono gestiti dall'applicazion
  - i dati non standard hanno bisogno ulteriore decodifica
  - la posizione geografica deve essere riproiettata
  - i dati non sono di immediato riutilizzo
- - non si presta alla manutenzione dei dati
+
+--
+
+#### [ritorna all'indice](#/1)
 
 ---
 
 ## integrazione con il GIS
 
-- strumenti di integrazione tra ODK aggregate e postgis
+- MDK Mobile data conversion kit
+ - conversione dati geografici da csv in shp/kml
+
+- procedure di integrazione tra ODK aggregate e postgis
  - integrazione a livello database tra le tabelle di ODK aggregate e tabelle in Postgis/Postgresql.
  - I dati raccolti sono cartografati in tempo reale.
 
@@ -222,6 +248,23 @@ i campi definiti come tipi geospaziali nella XForm sono gestiti dall'applicazion
 
 ---
 
+## MDK Mobile data conversion kit
+
+- Autore: University of Mariland, mantenuto da GeoODK
+- [Web](http://geoodk.com/mdk_howto.html) / [Repository](https://github.com/GeoODK/GeoODK-Software-Package-)
+
+- E' un software sviluppato in python che permette di manipolare i files csv di output dai servizi di aggregazione
+- Permette la selezione dei campi da esportare
+- i formati di output supportati sono shapefile e KML
+
+--
+
+#### [ritorna all'indice](#/1)
+
+---
+
+
+
 ## procedure di integrazione tra ODK aggregate e postgis
 
 - Autore: mathieu.bossaert@cenlr.org, Conservatoire d'espace naturels Laguedoc-Roussilion
@@ -230,16 +273,21 @@ i campi definiti come tipi geospaziali nella XForm sono gestiti dall'applicazion
 - La procedura permette di aggiornare in modo automatico, alla registrazione di una submission su odk aggregate, il sistema informazione naturalistica dell'ente. 
 - permette una stretta integrazione tra sistemi di raccolta e rappresentazione cartografica, ma è molto legata al database ed alla struttura del dataset
 
+--
+
+#### [ritorna all'indice](#/1)
+
 ---
+
 
 ## Il plugin QgisODK
 
-- plugin di QGIS
+- [plugin](http://plugins.qgis.org/plugins/QgisODK/) in python per [QGIS](https://www.qgis.org/)
+- Aggregazione Multipiattaforma (attualmente ODK aggregate, Google Drive e ona.io)
 - Generazione semiautomatica del il modulo XForm a partire dalla proprietà del layer sorgente di QGIS adattando i tipi di dati/widget di QGIS ai tipi ODK
-- Riorganizzare i campi per la raccolta in loco
-- Multipiattaforma di aggregazione (attualmente ODK aggregate, Google Drive e ona.io)
-- Trasferire i moduli  ad una piattaforma ODK
-- Sincronizzare i dati raccolti con il layer sorgente
+- Riorganizzazione dei campi per la raccolta in loco
+- Trasferimento dei moduli (upload) alla piattaforma ODK
+- Sincronizzazione dei dati raccolti con le sorgenti dati esistenti
 
 --
 
@@ -299,6 +347,11 @@ nel layer sorgente
 - Gestione dei default data
 - Gestione dei vincoli
 - Generazione di mbtiles per mappe offline
+- Gestione dei dati esistenti ([preloading](https://opendatakit.org/help/form-design/data-preloading/))
+
+--
+
+#### [ritorna all'indice](#/1)
 
 ---
 
@@ -323,3 +376,8 @@ nel layer sorgente
 1. upload del modulo al servizio di aggregazione
 1. raccolta dei dati sul campo
 1. download delle form submission e sincronizzazione con il dataset esistente
+
+--
+
+#### [ritorna all'indice](#/1)
+
