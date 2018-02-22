@@ -4,7 +4,9 @@
 
 Raccolta in loco di informazioni a contenuto geospaziale con Open Data Kit (ODK) e QGIS
 
-Enrico Ferreguti – enricofer@gmail.com
+(C)2018 Enrico Ferreguti – enricofer@gmail.com
+
+![flusso](https://i.creativecommons.org/l/by-sa/3.0/88x31.png)
 
 https://opendatakit.org/
 
@@ -64,7 +66,7 @@ https://github.com/enricofer/QgisODK/
 
 - Le informazioni da raccogliere sono organizzate in moduli secondo lo standard [Xform](https://en.wikipedia.org/wiki/XForms) (XML)
 - Per la progettazione della form, ODK mette a disposizione lo strumento build: https://build.opendatakit.org/
-- In alternativa il contenuto informativo può essere definito con un [XlsForm](http://xlsform.org/), ovvero un foglio di excel opportunamente compilato [traducibile in Xform](http://geoodk.com/xlsform_converter.html). 
+- In alternativa il contenuto informativo può essere definito con un [XlsForm](http://xlsform.org/), ovvero un foglio di excel opportunamente compilato [traducibile in Xform](http://geoodk.com/xlsform_converter.html).
 
 --
 
@@ -270,7 +272,7 @@ i campi definiti come tipi geospaziali nella XForm sono gestiti dall'applicazion
 - Autore: mathieu.bossaert@cenlr.org, Conservatoire d'espace naturels Laguedoc-Roussilion
   [Web](http://si.cenlr.org/geoodk_sicen_mobile) / [Repository](https://framagit.org/mathieubossaert/formation_odk/wikis/cote-base-de-donnee)
 
-- La procedura permette di aggiornare in modo automatico, alla registrazione di una submission su odk aggregate, il sistema informazione naturalistica dell'ente. 
+- La procedura permette di aggiornare in modo automatico, alla registrazione di una submission su odk aggregate, il sistema informazione naturalistica dell'ente.
 - permette una stretta integrazione tra sistemi di raccolta e rappresentazione cartografica, ma è molto legata al database ed alla struttura del dataset
 
 --
@@ -368,7 +370,7 @@ nel layer sorgente
 ## Attivita del workshop
 
 1. definizione in QGIS della struttura dei dati da rilevare dati
-1. raggruppamento e specificazione del modulo di raccolta 
+1. raggruppamento e specificazione del modulo di raccolta
 1. predisposizione dei servizi di aggregazione
  - odk aggregate, gdrive, ona.io
 1. configurazione dei servizi di aggregazione
